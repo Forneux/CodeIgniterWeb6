@@ -13,14 +13,21 @@
                         <?php echo $this->session->flashdata('errors'); ?>
                     </div>
                 <?php } ?>
-                <form action="<?php echo base_url('project/store'); ?>" method="POST">
+                <form action="<?php echo base_url('project/store'); ?>" method="POST" enctype="multipart/form-data">
+
                     <div class="form-group mb-3">
-                        <label for="name">Name</label>
+                        <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
+
                     <div class="form-group mb-3">
-                        <label for="description">Description</label>
+                        <label for="description">Description:</label>
                         <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="image">Image:</label>
+                        <input type="file" name="image" id="image" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary">Save Project</button>

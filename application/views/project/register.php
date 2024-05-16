@@ -16,7 +16,7 @@
                 <h2 class="text-center fw-bold">Register</h2>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('register_user') ?>" method="post">
+                <form action="<?= base_url('register_user') ?>" method="post" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <label for="fname" class="input-group-text fw-bold">First Name:</label>
                         <input type="text" class="form-control" name="fname" id="fname" placeholder="">

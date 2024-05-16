@@ -25,7 +25,7 @@ class Project_model extends CI_Model
             'Last_Name' => $this->input->post('lname'),
             'Username' => $this->input->post('username'),
             'Password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
-            'Profile_Pic' => $this->input->post('pic')
+            'Profile_Pic' => $this->upload->data('file_name')
         ];
 
         try {
@@ -34,7 +34,7 @@ class Project_model extends CI_Model
         } catch (Exception $e) {
             return $e->getMessage();
         }
-        
+
     }
     public function verify_user()
     {
@@ -54,10 +54,12 @@ class Project_model extends CI_Model
     */
     public function store()
     {
+
         $data = [
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
-            'created_at' => date("Y/m/d/H:i:s")
+            'created_at' => date("Y/m/d/H:i:s"),
+            'image' => $this->upload->data('file_name')
         ];
 
         $result = $this->db->insert('projects', $data);
@@ -81,7 +83,8 @@ class Project_model extends CI_Model
     {
         $data = [
             'name' => $this->input->post('name'),
-            'description' => $this->input->post('description')
+            'description' => $this->input->post('description'),
+            'image' => $this->upload->data('file_name')
         ];
 
         $result = $this->db->where('id', $id)->update('projects', $data);
@@ -98,10 +101,11 @@ class Project_model extends CI_Model
         return $result;
     }
 
-    public function verify_username($username){
+    public function verify_username($username)
+    {
 
-       $count = $this->db->query('SELECT COUNT(`Username`) AS count FROM user WHERE Username = ?', $username)->row();
-       return $count;
+        $count = $this->db->query('SELECT COUNT(`Username`) AS count FROM user WHERE Username = ?', $username)->row();
+        return $count;
 
     }
 }

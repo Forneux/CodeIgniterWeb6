@@ -57,8 +57,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = "project/index";
 $route['logout'] = "project/logout";
 $route['login_user']['post'] = "project/login_user";
+
 $route['register'] = "project/register";
 $route['register_user']['post'] = "project/register_user";
+
 $route['project/create'] = "project/create";
 $route['project/store']['post'] = "project/store";
 $route['project/edit/(:num)'] = "project/edit/$1";

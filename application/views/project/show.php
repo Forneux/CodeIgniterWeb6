@@ -10,6 +10,11 @@
             <div class="card-body">
                 <b class="text-muted">Name:</b>
                 <p><?php echo $project->name; ?></p>
+                <b class="text-muted">Image:</b>
+                <br>
+                <img src="<?= base_url('../assets/project_images/') . $project->image ?>" alt="<?= $project->image ?>"
+                    class="rounded" height=200px width=200px>
+                <br>
                 <b class="text-muted">Description:</b>
                 <p><?php echo $project->description; ?></p>
             </div>

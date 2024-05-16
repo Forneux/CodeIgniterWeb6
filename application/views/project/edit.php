@@ -14,17 +14,24 @@
                     </div>
                 <?php } ?>
 
-                <form action="<?php echo base_url('project/update/' . $project->id); ?>" method="POST">
+                <form action="<?php echo base_url('project/update/' . $project->id); ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
-                    <div class="form-group">
-                        <label for="name">Name</label>
+
+                    <div class="form-group mb-3">
+                        <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" name="name"
                             value="<?php echo $project->name; ?>">
                     </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
+
+                    <div class="form-group mb-3">
+                        <label for="description">Description:</label>
                         <textarea class="form-control" id="description" rows="3"
                             name="description"><?php echo $project->description; ?></textarea>
+                    </div>
+
+                    <div class="form-froup mb-3">
+                        <label for="image">Image:</label>
+                        <input type="file" name="image" id="image" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary">Save Project</button>

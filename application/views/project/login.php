@@ -18,7 +18,7 @@
                 <h2 class="text-center fw-bold">Login</h2>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('login_user') ?>" method="post">
+                <form action ="<?= base_url('login_user') ?>" method="post">
                     <div class="input-group mb-3">
                         <label for="username" class="input-group-text">Username:</label>
                         <input type="text" class="form-control" name="username" id="username" placeholder="">

@@ -20,6 +20,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Date Created</th>
+                        <th>Image</th>
                         <th width="240px">Action</th>
                     </tr>
 
@@ -27,7 +28,21 @@
                         <tr>
                             <td><?php echo $project->name; ?></td>
                             <td><?php echo $project->description; ?></td>
+
                             <td><?php echo $project->created_at; ?></td>
+
+                            <td>
+                                
+                                <?php
+                                if ($project->image == null) {
+                                    echo "No Image";
+                                } else { ?>
+                                    <img src="<?= base_url('../assets/project_images/') . $project->image ?>"
+                                        alt="<?= $project->image ?>" class="rounded" height=70px width=70px>
+                                <?php } ?>
+
+                            </td>
+
                             <td>
                                 <a class="btn btn-outline-info"
                                     href="<?php echo base_url('project/show/' . $project->id) ?>">

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['User_ID'])) {// !$this->session->userdata('User_ID')
+if (!isset($_SESSION['User_ID'])) { // !$this->session->userdata('User_ID')
     $this->session->set_flashdata('error', 'Please log in first.');
     redirect(base_url());
     exit();
