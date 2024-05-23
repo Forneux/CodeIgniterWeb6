@@ -268,7 +268,6 @@ class Project extends CI_Controller
       $this->session->set_flashdata('error', "Something went wrong. Please try again.");
     }
 
-
     redirect(base_url('home'));
   }
 

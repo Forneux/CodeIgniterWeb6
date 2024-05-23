@@ -84,6 +84,7 @@ class Project_model extends CI_Model
         $data = [
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
+            'updated_at' => date('Y-m-d H:i:s'),
             'image' => $this->upload->data('file_name')
         ];
 
