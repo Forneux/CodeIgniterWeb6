@@ -8,8 +8,7 @@
                 </a>
             </div>
             <div class="card-body">
-                <?php
-                if ($this->session->flashdata('success')) { ?>
+                <?php if ($this->session->flashdata('success')) { ?>
                     <div class="alert alert-success">
                         <?php echo $this->session->flashdata('success'); ?>
                     </div>

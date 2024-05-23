@@ -98,7 +98,7 @@ class Project_model extends CI_Model
     public function delete($id)
     {
         $result = $this->db->delete('projects', array('id' => $id));
-        return $result;
+        return $result;     
     }
 
     public function verify_username($username)

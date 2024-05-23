@@ -179,7 +179,7 @@ class Project extends CI_Controller
       ];
 
       $this->load->library('upload', $config);
-      
+
       if ($this->upload->do_upload('image')) {
 
         $this->project->store();
@@ -201,8 +201,10 @@ class Project extends CI_Controller
   */
   public function edit($id)
   {
-    $data['project'] = $this->project->get($id);
-    $data['title'] = "Edit Project";
+    $data = [
+      'project' => $this->project->get($id),
+      'title' => "Edit Project"
+    ];
 
     $this->load->view('layout/head', $data);
     $this->load->view('layout/header');
@@ -232,15 +234,14 @@ class Project extends CI_Controller
       ];
 
       $this->load->library('upload', $config);
-      
+
       if ($this->upload->do_upload('image')) {
 
         $this->project->update($id);
         $this->session->set_flashdata('success', "Updated Successfully!");
         redirect(base_url('home'));
 
-      }
-      else {
+      } else {
         $this->session->set_flashdata('error', $this->upload->display_errors());
         redirect(base_url('home'));
       }
@@ -254,9 +255,19 @@ class Project extends CI_Controller
 
   public function delete($id)
   {
-    $item = $this->project->delete($id);
+    $project = $this->project->get($id);
 
-    $this->session->set_flashdata('success', "Deleted Successfully!");
+    $filename = $project->image;
+
+    if (unlink("assets/project_images/" . $filename)) {
+
+      $this->project->delete($id);
+      $this->session->set_flashdata('success', "Deleted Successfully!");
+
+    } else {
+      $this->session->set_flashdata('error', "Something went wrong. Please try again.");
+    }
+
 
     redirect(base_url('home'));
   }

@@ -36,13 +36,21 @@
                     </div>
                     <div class="input-group mb-3">
                         <label for="" class="input-group-text fw-bold">Picture:</label>
-                        <input type="file" class="form-control" name="pic" id="pic">
-                    </div>  
+                        <input type="file" class="form-control" name="pic" id="pic" onchange="previewImage(event)">
+                    </div>
 
+                    <h6 class="fw-bold">Image Preview:</h6>
+                    <div class="card mt-3">
+                        <div class="card-body rounded">
+                            <img src="" id="previewimg" class="w-50 h-50 rounded d-none">
+                        </div>
+                    </div>
+                    <br>
                     <div class="text-center">
                         <button class="btn btn-success px-3" type="submit">Register</button>
                         <div class="text-center fw-bold">
-                            Already have an account? <a href="<?=base_url('../')?>" class="text-primary text-decoration-none">Login</a>
+                            Already have an account? <a href="<?= base_url('../') ?>"
+                                class="text-primary text-decoration-none">Login</a>
                         </div>
                     </div>
                 </form>
@@ -50,3 +58,15 @@
         </div>
     </div>
 </body>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('previewimg');
+            output.classList.remove('d-none');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
